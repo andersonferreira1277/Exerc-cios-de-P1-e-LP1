@@ -20,8 +20,10 @@ class MyWindow(QWidget):
             for j in range(4):
                 button = QPushButton(blabels[i][j])
                 list_buttons.append(button)
+                print("Valor de texto:", list_buttons[list_buttons.index(button)].text())
+                list_buttons[list_buttons.index(button)].clicked.connect(lambda: self.doThis(self.sender()))
                 myGrid.addWidget(list_buttons[len(list_buttons)-1], i, j)
-                #list_buttons[len(list_buttons) - 1].clicked.connect(lambda: self.doThis(self.))
+                print(list_buttons[len(list_buttons) - 1])
 
         myField = QLineEdit()
         myGrid.addWidget(myField, 4, 0, 1, 4) #Linha, coluna, linhas ocupadas, colunas ocupadas
@@ -30,10 +32,9 @@ class MyWindow(QWidget):
         self.setWindowTitle("Layout")
         self.show()
 
-    def doThis(self, buttonClicked):
+    def doThis(self, texto):
         print("Hello World!!!")
-        print(self.__str__())
-        print(buttonClicked)
+        print(texto.text())
 
 app = QApplication(sys.argv)
 frame = MyWindow()
