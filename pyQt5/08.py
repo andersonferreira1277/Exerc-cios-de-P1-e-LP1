@@ -25,7 +25,7 @@ class MyWindow(QWidget):
          label3.setAlignment(Qt.AlignCenter)
          label4.setAlignment(Qt.AlignCenter)
 
-         label3.setPixmap(QPixmap("python.jpg"))
+         label3.setPixmap(QPixmap("python.png"))
 
          vbox = QVBoxLayout()
          vbox.addWidget(label1)
