@@ -27,7 +27,7 @@ class MyWindow(QWidget):
         flo.addRow("Input Mask",e3)
 
         e4=QLineEdit()
-        e4.textChanged.connect(self.textchanged)
+        e4.textChanged.connect(lambda: self.textchanged(self.sender()))
         flo.addRow("Text changed",e4)
 
         e5=QLineEdit()
@@ -38,16 +38,16 @@ class MyWindow(QWidget):
         e6.setReadOnly(True)
         flo.addRow("Read Only",e6)
 
-        e5.editingFinished.connect(self.enterPress)
+        e5.editingFinished.connect(lambda: self.enterPress(self.sender()))
 
         self.setLayout(flo)
         self.setWindowTitle("PyQt")
         self.show()
 
-    def textchanged(text):
-        print ("contents of text box: "+text)
-    def enterPress():
-        print ("edited")
+    def textchanged(self, lineEdit):
+        print("Texto mudado "+lineEdit.text())
+    def enterPress(self, lineEdit):
+        print("edited")
 
 app = QApplication(sys.argv)
 frame = MyWindow()

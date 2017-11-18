@@ -20,7 +20,7 @@ class MyWindow(QMainWindow):
 
     def doThis(self, button):
         print("Hello world")
-        print(button.text(), "Opa")
+        print(button.text()+" Opa")
 
 
     """def labelText(self):
