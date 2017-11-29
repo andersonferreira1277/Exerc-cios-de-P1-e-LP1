@@ -1,7 +1,7 @@
-m = float(input())
-a = float(input())
-a = a**2
-r = m/a
+peso = float(input("Digite o peso:\n"))
+altura = float(input("Digite a altura: - ex: 1.68\n"))
+altura = altura**2
+r = peso/altura
 if r<18.5:
     print("%.2f MAGREZA" % r)
 elif r>=18.5 and r<=24.9:
