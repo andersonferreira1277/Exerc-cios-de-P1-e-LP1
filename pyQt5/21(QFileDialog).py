@@ -42,8 +42,7 @@ class DemoFileDialog(QWidget):
     def getfiles(self):
         dlg=QFileDialog()
         dlg.setFileMode(QFileDialog.AnyFile)
-        dlg.setFilter("Text files (*.txt)")
-        filenames=QStringList()
+        dlg.setNameFilter("Text files (*.txt)")
         if dlg.exec_():
             filenames=dlg.selectedFiles()
             f = open(filenames[0], 'r')
