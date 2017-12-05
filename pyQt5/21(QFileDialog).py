@@ -44,13 +44,12 @@ class DemoFileDialog(QWidget):
         dlg.setFileMode(QFileDialog.AnyFile)
         dlg.setNameFilter("Text files (*.txt)")
         if dlg.exec_():
-            print("Dlg=============" + str(dlg))
             filenames=dlg.selectedFiles()
-            f = open(filenames[0], 'r')
+            #print("Filename ==============" + str(filenames)) #retorna um lista com endereços
+            f = open(filenames[0], 'r') #open recebe uma str com 1 endereço
             with f:
                 data = f.read()
                 self.contents.setText(data)
-
 app = QApplication(sys.argv)
 frane = DemoFileDialog()
 sys.exit(app.exec_())
