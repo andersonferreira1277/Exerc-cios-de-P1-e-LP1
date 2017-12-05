@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
-
+"""
+andersonferreira1277@gmail.com
+"""
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
