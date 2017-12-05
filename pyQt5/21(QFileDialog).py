@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 """
-Anderson Ferreira CÂmara - andersonferreira1277@gmail.com
+Anderson Ferreira CÂmara - andersonferreira1277@gmail.com 
 """
 import sys
 from PyQt5.QtWidgets import *
