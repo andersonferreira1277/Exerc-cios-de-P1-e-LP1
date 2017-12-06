@@ -1,5 +1,5 @@
 #-*- coding: UTF-8-*-
-"Feito por Anderson Ferreira CÃ¢mara - andersonferreira1277@gmail.com"
+"Feito por Anderson Ferreira Câmara - andersonferreira1277@gmail.com"
 from os import system as system_call
 def ping(host):
     parameters = "-n 2"

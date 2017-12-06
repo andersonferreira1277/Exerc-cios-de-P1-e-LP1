@@ -62,6 +62,7 @@ document.add_page_break()
 document.save('demo.docx')
 try:
     os.system("chmod 777 demo.docx")
+    os.system("libreoffice --writer demo.docx")
 except:
     print("Erro")
-os.system("libreoffice --writer demo.docx")
+    os.system("demo.docx")
