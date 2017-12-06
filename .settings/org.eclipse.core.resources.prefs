@@ -1,10 +1,3 @@
 eclipse.preferences.version=1
-encoding//GeradorDeDocumentos/declaracao.py=UTF-8
-encoding//GeradorDeDocumentos/main.py=UTF-8
-encoding//exercicios/python-docx.py=utf-8
-encoding//pyQt5/21(QFileDialog).py=UTF-8
-encoding//pyQt5/24(QSplitter).py=UTF-8
-encoding//pyQt5/25(Multiple_Document_Interface).py=UTF-8
+encoding//GeradorDeDocumentos/openDocument.py=UTF-8
 encoding//pyQt5/26(Drag_and_Drop).py=UTF-8
-encoding//verificar_internet_pyQt/main.py=latin1
-encoding//verificar_internet_pyQt/verificar.py=latin1
