@@ -25,7 +25,7 @@ def createDB():
     query.exec_("insert into sportsmen values(103, 'Ussain', 'Bolt')")
     query.exec_("insert into sportsmen values(104, 'Sachin', 'Tendulkar')")
     query.exec_("insert into sportsmen values(105, 'Saina', 'Nehwal')")
-    QMessageBox.information(None, "Informação", "Conectado ao banco de dados", QMessageBox.Ok)
+    QMessageBox.information(None, "Informação", "Registro salvo no banco de dados", QMessageBox.Ok)
     return True
 if __name__ == '__main__':
     app = QApplication(sys.argv)
