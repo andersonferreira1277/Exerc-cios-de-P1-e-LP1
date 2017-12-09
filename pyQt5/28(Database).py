@@ -7,7 +7,6 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtSql import *
-#import sportsconnection
 
 def initializeModel(model):
     model.setTable('sportsmen')
@@ -20,7 +19,6 @@ def initializeModel(model):
 def createView(title, model):
     view = QTableView()
     view.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-    #view.setHorizontalHeader()
     view.setModel(model)
     view.setWindowTitle(title)
     return view
