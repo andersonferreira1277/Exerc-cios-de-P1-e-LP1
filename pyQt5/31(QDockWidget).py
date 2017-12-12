@@ -8,9 +8,11 @@ from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QDockWidget, QListWidget, 
 from PyQt5.QtCore import *
 
 class DockDemo(QMainWindow):
+
     def __init__(self):
         super(DockDemo, self).__init__()
         self.initUi()
+
     def initUi(self):
         layout = QHBoxLayout()
         bar = self.menuBar()
@@ -30,6 +32,7 @@ class DockDemo(QMainWindow):
         self.setLayout(layout)
         self.setWindowTitle("Dock demo")
         self.show()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
