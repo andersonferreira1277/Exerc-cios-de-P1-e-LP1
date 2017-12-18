@@ -37,7 +37,7 @@ class StatusDemo(QMainWindow):
             self.statusBar.show()
 
 
-if __name__ == '__main':
+if __name__ == '__main__':
     app = QApplication(sys.argv)
     frame = StatusDemo()
     sys.exit(app.exec_())
