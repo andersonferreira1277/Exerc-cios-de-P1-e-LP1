@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 """
 andersonferreira1277@gmail.com
+https://stackoverflow.com/questions/34779724/python-docx-replace-string-in-paragraph-while-keeping-style
 """
 from docx import Document
 
