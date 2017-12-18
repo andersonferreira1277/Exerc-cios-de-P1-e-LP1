@@ -3,14 +3,22 @@
 """
 andersonferreira1277@gmail.com
 """
-
 from docx import Document
-from docx.shared import Inches
-from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-document = Document()
-paragraph = document.add_paragraph()
-paragraph = document.add_picture('logo.jpg', Inches(1.00))
-paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
-document.add_paragraph('Alguma coisa')
-document.save('Demo.docx')
+def replace_string():
+    document = Document('declaracao.docx')
+    for p in document.paragraphs:
+        if '{aluno}' in p.text:
+            inline = p.runs
+            # Loop added to work with runs (strings with same style)
+            for i in range(len(inline)):
+                print("Inline===============" + inline[i].text)
+                if '{aluno}' in inline[i].text:
+                    text = inline[i].text.replace('{aluno}', 'Anderson Ferreira Câmara')
+                    inline[i].text = text
+            print(p.text)
+
+    document.save('dest1.docx')
+    return 1
+
+replace_string()
