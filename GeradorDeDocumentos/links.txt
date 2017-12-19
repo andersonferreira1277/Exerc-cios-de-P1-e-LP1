@@ -1,0 +1,3 @@
+http://www.raspberrypiportugal.pt/obter-data-hora-atual-python/
+https://pythonhelp.wordpress.com/2011/11/05/obtendo-a-data-e-a-hora-atuais-em-python/
+https://www.programiz.com/python-programming/library/strftime
