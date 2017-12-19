@@ -1,151 +1,60 @@
 #!/urb/bin/env python
 # _*_ coding: utf-8 _*_
 
-
-unidades = ["zero", "um", "dois", "três", "quatro",
-            "cinco", "seis", "sete", "oito", "nove"]
-
-teens = ["dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove"]
-
-tens = ["dez", "vinte", "trinta", "quarenta", "cinquenta",
-        "sessenta", "setenta", "oitenta", "noventa"]
+import time
 
 
-def tercia(num):
-    numero = str(num)
-    numero.zfill(3)
-    a = int(numero[0])
-    b = int(numero[1])
-    c = int(numero[2])
-    if a == 0:
-        if b == 0:
-            resultado = unidades[c]
-            return resultado
-        elif b == 1:
-            if c >= 0 and c <= 9:
-                resultado = teens[c]
-                return resultado
-        elif b == 2:
-            if c == 0:
-                resultado = 'vinte'
-                return resultado
-            elif c > 0 and c <= 9:
-                resultado = 'vinte e ' + unidades[c]
-                return resultado
-        elif b >= 3 and b <= 9:
-            if c == 0:
-                resultado = tens[b - 1]
-                return resultado
-            if c >= 1 and c <= 9:
-                resultado = tens[b - 1] + ' e ' + unidades[c]
-                return resultado
-    if a == 1:
-        if b == 0:
-            if c == 0:
-                resultado = 'cem'
-                return resultado
-            elif c > 0 and c <= 9:
-                resultado = 'cento e ' + unidades[c]
-                return resultado
-        elif b == 1:
-            if c >= 0 and c <= 9:
-                resultado = 'cento e ' + teens[c]
-                return resultado
-        elif b == 2:
-            if c == 0:
-                resultado = 'cento e vinte'
-                return resultado
-            elif c > 0 and c <= 9:
-                resultado = 'cento e vinte e ' + unidades[c]
-                return resultado
-        elif b >= 3 and b <= 9:
-            if c == 0:
-                resultado = 'cento e ' + tens[b - 1]
-                return resultado
-            elif c > 0 and c <= 9:
-                resultado = 'cento e ' + tens[b - 1] + ' e ' + unidades[c]
-                return resultado
+class DataAtual:
 
-    elif a >= 2 and a <= 9:
-        if a == 2 and b == 0 and c == 0:
-            prefix = 'duzentos'
-        elif a == 2:
-            prefix = 'duzentos e '
+    @staticmethod
+    def getData():
+        """Retorna uma string com a data no formato dia/mes/ano"""
+        data = time.strftime('%d/%m/%Y')
+        return data
 
-        if a == 3 and b == 0 and c == 0:
-            prefix = 'trezentos'
-        elif a == 3:
-            prefix = 'trezentos e '
-        if a == 4 and b == 0 and c == 0:
-            prefix = 'quatrocentos'
-        elif a == 4:
-            prefix = 'quatrocentos e '
-        if a == 5 and b == 0 and c == 0:
-            prefix = 'quinhentos'
-        elif a == 5:
-            prefix = 'quinhentos e '
-        if a == 6 and b == 0 and c == 0:
-            prefix = 'seiscentos'
-        elif a == 6:
-            prefix = 'seiscentos e '
+    @staticmethod
+    def getDataPorExtenso():
+        """Retorno uma string com a data atual por extenso em português. ex. dezone dias do mês
+        dezembro de dois mil e dezessete"""
 
-        if a == 7 and b == 0 and c == 0:
-            prefix = 'setecentos'
+        meses = {1:'janeiro', 2:'fevereiro', 3:'março', 4:'abril', 5:'maio', 6:'junho', 7:'julho',
+                 8:'agosto',9:'setembro', 10:'outubro', 11:'novembro', 12:'dezembro'}
 
-        elif a == 7:
-            prefix = 'setecentos e '
-        if a == 8 and b == 0 and c == 0:
-            prefix = 'oitocentos'
-        elif a == 8:
-            prefix = 'oitocentos e '
-        if a == 9 and b == 0 and c == 0:
-            prefix = 'novecentos'
-        elif a == 9:
-            prefix = 'novecentos e '
+        unidades = {0:"", 1:"um", 2:"dois", 3:"três", 4:"quatro",
+                    5:"cinco", 6:"seis", 7:"sete", 8:"oito", 9:"nove"}
 
-        if b == 0:
-            if c == 0:
-                resultado = prefix
-                return resultado
-            elif c > 0 and c <= 9:
-                resultado = prefix + unidades[c]
-                return resultado
-        elif b == 1:
-            if c >= 0 and c <= 9:
-                resultado = prefix + teens[c]
-                return resultado
-                # elif c >= 6 and c <= 9:
-                # resultado = prefix+tens[b-1]+' e '+unidades[c]
-                return resultado
-        elif b == 2:
-            if c == 0:
-                resultado = prefix + 'vinte'
-                return resultado
-            elif c > 0 and c <= 9:
-                resultado = prefix + 'vinte e ' + unidades[c]
-                return resultado
-        elif b >= 3 and b <= 9:
-            if c == 0:
-                resultado = prefix + tens[b - 1]
-                return resultado
-            elif c > 0 and c <= 9:
-                resultado = prefix + tens[b - 1] + ' e ' + unidades[c]
-                return resultado
+        dezenas = {10:"dez", 11:"onze", 12:"doze", 13:"treze", 14:"quatorze", 15:"quinze",
+                   16:"dezesseis", 17:"dezessete", 18:"dezoito", 19:"dezenove",
+                   20:"vinte", 30:"trinta"}
 
+        dia, mes, ano = str(time.strftime('%d/%m/%Y')).split('/')
+        dia, mes, ano = map(int, [dia, mes, ano])
+        diaPorExtenso = str()
+        if dia:
+            if dia < 10:
+                diaPorExtenso = unidades[dia]
+            elif dia >= 10 and dia < 21:
+                diaPorExtenso = dezenas[dia]
+            elif dia >= 21 and dia < 30:
+                diaPorExtenso = dezenas[20]+' e '+ unidades[dia%20]
+            elif dia == 30:
+                diaPorExtenso = dezenas[dia]
+            elif dia >=31 and dia < 40:
+                diaPorExtenso = dezenas[30]+' e '+ unidades[dia%30]
 
-def main(num):
-    result = ''
-    numero = str(num)
-    numero = numero.zfill(9) + numero
-    posicion = 1
-    for i in [0, 3, 6]:
-        var = numero[i] + numero[i + 1] + numero[i + 2]
-        if int(var) != 0:
-            res = tercia(var)
-            if i == 0:
-                result = res + " milhões "
-            elif i == 3:
-                result = result + res + " mil "
-            elif i == 6:
-                result = result + res
-    return result
+        mesPorExtenso = meses[mes]
+
+        anoPorExtenso = 'dois mil e '
+
+        if ano:
+            if ano%2000 < 21:
+                anoPorExtenso = anoPorExtenso+dezenas[ano%2000]
+            elif ano%2000 >= 21:
+                anoPorExtenso = anoPorExtenso+dezenas[ano%2000]+' e '+unidades[(ano%2000)%20]
+            elif ano%2000 == 30:
+                anoPorExtenso = anoPorExtenso + dezenas[ano % 2000]
+            elif ano%2000 >= 31:
+                anoPorExtenso = anoPorExtenso+dezenas[ano%2000]+' e '+unidades[(ano%2000)%30]
+
+        dataPorExtenso = '{} dias do mês de {} de {}'.format(diaPorExtenso, mesPorExtenso, anoPorExtenso)
+        return dataPorExtenso

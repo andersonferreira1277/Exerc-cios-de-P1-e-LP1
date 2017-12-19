@@ -7,6 +7,7 @@ from Aluno import Aluno
 from DadosDoAluno import DadosDoAluno
 from DadosDeNascimento import DadosDeNascimento
 from DadosDaTurma import DadosDaTurma
+from DataAtual import DataAtual
 from docx import Document
 
 
@@ -16,14 +17,19 @@ class Modelo:
     def replace_string(aluno):
         document = Document('declaracao.docx')
 
+        # Obter data atual da classe
+        datastr = DataAtual.getData()
+        dataPorExtenso = DataAtual.getDataPorExtenso()
+        #
+
         "Duas lista de mesmo indice, 1 com palavras que existem no documento e a 2 com palavras para substituir no " \
         "documento"
         listaDeProcura = ['nome_aluno', 'pai', 'mae', 'nascimento', 'cidade', 'estado', 'serie', 'seguimento',
-                          'anoLetivo']
+                          'anoLetivo', 'data', 'xtenso']
         listaAluno = [aluno.dadosDoAluno.nomeAluno, aluno.dadosDoAluno.nomeDoPai, aluno.dadosDoAluno.nomeDaMae,
                       aluno.dadosDeNascimento.dataDeNascimento, aluno.dadosDeNascimento.cidadeDeNascimento,
                       aluno.dadosDeNascimento.estadoDeNascimento,
-                      aluno.dadosDaTurma.serie, aluno.dadosDaTurma.seguimento, aluno.dadosDaTurma.anoLetivo]
+                      aluno.dadosDaTurma.serie, aluno.dadosDaTurma.seguimento, aluno.dadosDaTurma.anoLetivo, datastr, dataPorExtenso]
 
         """for passa pela listaDeProcura, procurando cada item no documento declaracao.docx"""
         for p in document.paragraphs:

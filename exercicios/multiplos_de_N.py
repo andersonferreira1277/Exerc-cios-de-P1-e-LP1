@@ -26,4 +26,4 @@ if resultado == []:
     print ("INEXISTENTE")
 else:
     for x in resultado:
-        print x
+        print(x)
