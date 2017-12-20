@@ -3,10 +3,6 @@
 andersonferreira1277@gmail.com
 """
 
-from DadosDoAluno import DadosDoAluno
-from DadosDeNascimento import DadosDeNascimento
-from DadosDaTurma import DadosDaTurma
-
 
 class Aluno:
 

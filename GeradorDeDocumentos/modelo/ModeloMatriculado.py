@@ -14,7 +14,7 @@ from docx import Document
 class Modelo:
 
     @staticmethod
-    def replace_string(aluno):
+    def replaceModel(aluno):
         document = Document('declaracao.docx')
 
         # Obter data atual da classe
@@ -29,7 +29,8 @@ class Modelo:
         listaAluno = [aluno.dadosDoAluno.nomeAluno, aluno.dadosDoAluno.nomeDoPai, aluno.dadosDoAluno.nomeDaMae,
                       aluno.dadosDeNascimento.dataDeNascimento, aluno.dadosDeNascimento.cidadeDeNascimento,
                       aluno.dadosDeNascimento.estadoDeNascimento,
-                      aluno.dadosDaTurma.serie, aluno.dadosDaTurma.seguimento, aluno.dadosDaTurma.anoLetivo, datastr, dataPorExtenso]
+                      aluno.dadosDaTurma.serie, aluno.dadosDaTurma.seguimento, aluno.dadosDaTurma.anoLetivo, datastr,
+                      dataPorExtenso]
 
         """for passa pela listaDeProcura, procurando cada item no documento declaracao.docx"""
         for p in document.paragraphs:
@@ -55,4 +56,4 @@ b = DadosDeNascimento("07/03/1994", "Maceió", "Alagoas")
 c = DadosDaTurma("3º ano", "Ensino Médio", "2018")
 al = Aluno(a, b, c)
 
-Modelo.replace_string(al)
+Modelo.replaceModel(al)
