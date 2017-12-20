@@ -17,7 +17,7 @@ class Aluno:
         self.ID = ID
 
     def __str__(self):
-        return 'Nome do Aluno: ' + self.dadosDoAluno.nomeAluno + '\nPai: ' + self.dadosDoAluno.nomeDoPai + '\nMãe: '+ \
+        return 'ID: ' + str(self.ID) +'\nNome do Aluno: ' + self.dadosDoAluno.nomeAluno + '\nPai: ' + self.dadosDoAluno.nomeDoPai + '\nMãe: '+ \
                self.dadosDoAluno.nomeDaMae + '\nData de Nacimento: ' + self.dadosDeNascimento.dataDeNascimento + \
                '\nCidade: ' + self.dadosDeNascimento.cidadeDeNascimento + '\nUF: ' + \
                 self.dadosDeNascimento.estadoDeNascimento + '\nSerie: ' + self.dadosDaTurma.serie + '\nSeguimento: ' + \

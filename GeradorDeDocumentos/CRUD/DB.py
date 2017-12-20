@@ -85,4 +85,5 @@ gerador.insert(al)"""
 
 gerador = GeradorDB()
 imprimir = gerador.select('A')
-print(imprimir[0])
+for i in imprimir:
+    print(i)
