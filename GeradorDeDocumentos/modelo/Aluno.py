@@ -22,4 +22,4 @@ class Aluno:
                self.dadosDoAluno.nomeDaMae + '\nData de Nacimento: ' + self.dadosDeNascimento.dataDeNascimento + \
                '\nCidade: ' + self.dadosDeNascimento.cidadeDeNascimento + '\nUF: ' + \
                 self.dadosDeNascimento.estadoDeNascimento + '\nSerie: ' + self.dadosDaTurma.serie + '\nSeguimento: ' + \
-                self.dadosDaTurma.seguimento + '\nAno Letivo: ' + self.dadosDaTurma.anoLetivo
+                self.dadosDaTurma.seguimento + '\nAno Letivo: ' + str(self.dadosDaTurma.anoLetivo)

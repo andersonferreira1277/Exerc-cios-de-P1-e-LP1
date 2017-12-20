@@ -16,4 +16,5 @@ conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "
 conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "
              "VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 )")
 conn.commit()
+print(conn.total_changes)
 print("Records created successfully")
