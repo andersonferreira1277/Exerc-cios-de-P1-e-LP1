@@ -5,6 +5,7 @@ andersonferreira1277@gmail.com
 """
 
 from PyQt5.QtWidgets import QDialog
+from PyQt5.QtGui import QIntValidator
 from PyQt5 import uic
 import os
 
@@ -18,5 +19,9 @@ class ViewCadastro(QDialog):
     def initCadastro(self):
         url = os.path.abspath('view/cadastro.ui')
         uic.loadUi(url, self)
+
+        # QLineEdit Ano Letivo, só pode ter um número e no máximo 4 números.
+        self.anoLetivoLineEdit.setValidator(QIntValidator())
+        self.anoLetivoLineEdit.setMaxLength(4)
 
         self.show()
