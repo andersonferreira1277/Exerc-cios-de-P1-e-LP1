@@ -24,12 +24,12 @@ class Modelo:
 
         "Duas lista de mesmo indice, 1 com palavras que existem no documento e a 2 com palavras para substituir no " \
         "documento"
-        listaDeProcura = ['nome_aluno', 'pai', 'mae', 'nascimento', 'cidade', 'estado', 'serie', 'seguimento',
+        listaDeProcura = ['nome_aluno', 'pai', 'mae', 'nascimento', 'cidade', 'estado', 'serie', 'segmento',
                           'anoLetivo', 'data', 'xtenso']
         listaAluno = [aluno.dadosDoAluno.nomeAluno, aluno.dadosDoAluno.nomeDoPai, aluno.dadosDoAluno.nomeDaMae,
                       aluno.dadosDeNascimento.dataDeNascimento, aluno.dadosDeNascimento.cidadeDeNascimento,
                       aluno.dadosDeNascimento.estadoDeNascimento,
-                      aluno.dadosDaTurma.serie, aluno.dadosDaTurma.seguimento, aluno.dadosDaTurma.anoLetivo, datastr,
+                      aluno.dadosDaTurma.serie, aluno.dadosDaTurma.segmento, aluno.dadosDaTurma.anoLetivo, datastr,
                       dataPorExtenso]
 
         """for passa pela listaDeProcura, procurando cada item no documento declaracao.docx"""
@@ -50,10 +50,10 @@ class Modelo:
         document.save('dest1.docx')
         return 1
 
-"""
+
 a = DadosDoAluno("Anderson Ferreira Câmara", "Adeilton", "Marineide")
 b = DadosDeNascimento("07/03/1994", "Maceió", "Alagoas")
 c = DadosDaTurma("3º ano", "Ensino Médio", "2018")
 al = Aluno(a, b, c)
 
-Modelo.replaceModel(al)"""
+Modelo.replaceModel(al)

@@ -25,9 +25,9 @@ class GeradorDB:
             param = (aluno.dadosDoAluno.nomeAluno, aluno.dadosDoAluno.nomeDoPai, aluno.dadosDoAluno.nomeDaMae,
                      aluno.dadosDeNascimento.dataDeNascimento, aluno.dadosDeNascimento.cidadeDeNascimento,
                      aluno.dadosDeNascimento.estadoDeNascimento, aluno.dadosDaTurma.serie,
-                     aluno.dadosDaTurma.seguimento, aluno.dadosDaTurma.anoLetivo)
+                     aluno.dadosDaTurma.segmento, aluno.dadosDaTurma.anoLetivo)
             sql = "insert INTO dados_do_aluno (nome_aluno, pai, mae, data, cidade_nascimento, estado_nascimento, " \
-                  "serie, seguimento, ano_letivo) values(?, ?, ?, ?, ?,?, ?, ?, ?)"
+                  "serie, segmento, ano_letivo) values(?, ?, ?, ?, ?,?, ?, ?, ?)"
             self.conn.execute(sql, param)
             self.conn.commit()
             linhas = int(self.conn.total_changes)
@@ -54,11 +54,11 @@ class GeradorDB:
                 cidadeDeNascimento = i[5]
                 estadoDeNascimento = i[6]
                 serie = i[7]
-                seguimento = i[8]
+                segmento = i[8]
                 anoLetivo = i[9]
                 a = DadosDoAluno(nome, pai, mae)
                 b = DadosDeNascimento(dataDeNascimento, cidadeDeNascimento, estadoDeNascimento)
-                c = DadosDaTurma(serie, seguimento, anoLetivo)
+                c = DadosDaTurma(serie, segmento, anoLetivo)
                 al = Aluno(a, b, c)
                 al.setID(ID)
                 lista.append(al)
@@ -77,12 +77,12 @@ class GeradorDB:
             self.connect()
             sql = "UPDATE dados_do_aluno " \
                   "SET nome_aluno= ?, pai= ?, mae= ?, data= ?,cidade_nascimento=?," \
-                  "estado_nascimento=?, serie=?, seguimento=?, ano_letivo=? WHERE id=?;"
+                  "estado_nascimento=?, serie=?, segmento=?, ano_letivo=? WHERE id=?;"
 
             param = (aluno.dadosDoAluno.nomeAluno, aluno.dadosDoAluno.nomeDoPai, aluno.dadosDoAluno.nomeDaMae,
                      aluno.dadosDeNascimento.dataDeNascimento, aluno.dadosDeNascimento.cidadeDeNascimento,
                      aluno.dadosDeNascimento.estadoDeNascimento, aluno.dadosDaTurma.serie,
-                     aluno.dadosDaTurma.seguimento, aluno.dadosDaTurma.anoLetivo, aluno.ID)
+                     aluno.dadosDaTurma.segmento, aluno.dadosDaTurma.anoLetivo, aluno.ID)
 
             self.conn.execute(sql, param)
             self.conn.commit()

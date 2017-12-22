@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>399</width>
+    <height>351</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Cadastro de Aluno</string>
+  </property>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>381</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="nomeDoAlunoLabel">
+      <property name="text">
+       <string>Nome do Aluno</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="nomeDoAlunoLineEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="nomeDoPaiDoAlunoLabel">
+      <property name="text">
+       <string>Nome do Pai do aluno</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="nomeDoPaiDoAlunoLineEdit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="nomeDaMEDoAlunoLabel">
+      <property name="text">
+       <string>Nome da Mãe do aluno</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="nomeDaMEDoAlunoLineEdit"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="dataDeNascimentoAlunoLabel">
+      <property name="text">
+       <string>Data de Nascimento aluno</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QDateEdit" name="dataDeNascimentoAlunoDateEdit">
+      <property name="dateTime">
+       <datetime>
+        <hour>0</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>1994</year>
+        <month>3</month>
+        <day>7</day>
+       </datetime>
+      </property>
+      <property name="minimumTime">
+       <time>
+        <hour>0</hour>
+        <minute>0</minute>
+        <second>0</second>
+       </time>
+      </property>
+      <property name="currentSection">
+       <enum>QDateTimeEdit::DaySection</enum>
+      </property>
+      <property name="displayFormat">
+       <string>dd/MM/yyyy</string>
+      </property>
+      <property name="date">
+       <date>
+        <year>1994</year>
+        <month>3</month>
+        <day>7</day>
+       </date>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="naturalidadeLabel">
+      <property name="text">
+       <string>Naturalidade</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="naturalidadeLineEdit"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="uFLabel">
+      <property name="text">
+       <string>UF</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="uFLineEdit"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="segmentoEducacionalLabel">
+      <property name="text">
+       <string>Segmento Educacional</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QComboBox" name="segmentoEducacionalComboBox"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="serieLabel">
+      <property name="text">
+       <string>Serie</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QComboBox" name="serieComboBox"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="anoLetivoLabel">
+      <property name="text">
+       <string>Ano Letivo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="anoLetivoLineEdit">
+      <property name="inputMethodHints">
+       <set>Qt::ImhPreferNumbers</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

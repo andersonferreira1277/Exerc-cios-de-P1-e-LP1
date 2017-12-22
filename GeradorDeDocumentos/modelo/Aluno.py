@@ -21,5 +21,5 @@ class Aluno:
                self.dadosDoAluno.nomeDoPai + '\nMãe: '+ \
                self.dadosDoAluno.nomeDaMae + '\nData de Nacimento: ' + self.dadosDeNascimento.dataDeNascimento + \
                '\nCidade: ' + self.dadosDeNascimento.cidadeDeNascimento + '\nUF: ' + \
-                self.dadosDeNascimento.estadoDeNascimento + '\nSerie: ' + self.dadosDaTurma.serie + '\nSeguimento: ' + \
-                self.dadosDaTurma.seguimento + '\nAno Letivo: ' + str(self.dadosDaTurma.anoLetivo)
+                self.dadosDeNascimento.estadoDeNascimento + '\nSerie: ' + self.dadosDaTurma.serie + '\nsegmento: ' + \
+                self.dadosDaTurma.segmento + '\nAno Letivo: ' + str(self.dadosDaTurma.anoLetivo)
