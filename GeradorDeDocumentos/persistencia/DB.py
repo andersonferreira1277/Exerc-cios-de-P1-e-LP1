@@ -2,10 +2,10 @@
 """
 andersonferreira1277@gmail.com
 """
-from Aluno import Aluno
-from DadosDoAluno import DadosDoAluno
-from DadosDeNascimento import DadosDeNascimento
-from DadosDaTurma import DadosDaTurma
+from modelo.Aluno import Aluno
+from modelo.DadosDoAluno import DadosDoAluno
+from modelo.DadosDeNascimento import DadosDeNascimento
+from modelo.DadosDaTurma import DadosDaTurma
 
 import sqlite3
 import os
@@ -15,7 +15,7 @@ import sys
 class GeradorDB:
 
     def connect(self):
-        url = os.path.abspath('../bd.db')
+        url = os.path.abspath('bd.db')
         self.conn = sqlite3.connect(url)
 
     def insert(self, aluno):
@@ -26,7 +26,7 @@ class GeradorDB:
                      aluno.dadosDeNascimento.dataDeNascimento, aluno.dadosDeNascimento.cidadeDeNascimento,
                      aluno.dadosDeNascimento.estadoDeNascimento, aluno.dadosDaTurma.serie,
                      aluno.dadosDaTurma.segmento, aluno.dadosDaTurma.anoLetivo)
-            sql = "insert INTO dados_do_aluno (nome_aluno, pai, mae, data, cidade_nascimento, estado_nascimento, " \
+            sql = "insert INTO dados_do_aluno(nome_aluno, pai, mae, data, cidade_nascimento, estado_nascimento, " \
                   "serie, segmento, ano_letivo) values(?, ?, ?, ?, ?,?, ?, ?, ?)"
             self.conn.execute(sql, param)
             self.conn.commit()
@@ -109,5 +109,6 @@ class GeradorDB:
         except:
             print("Unexpected error:", sys.exc_info()[0])
             raise
+
     def close(self):
         self.conn.close()

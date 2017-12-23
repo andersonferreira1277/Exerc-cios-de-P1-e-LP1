@@ -4,10 +4,16 @@
 andersonferreira1277@gmail.com
 """
 
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QLineEdit
 from PyQt5.QtGui import QIntValidator
 from PyQt5 import uic
 import os
+
+from modelo.Aluno import Aluno
+from persistencia.DB import GeradorDB
+from modelo.DadosDaTurma import DadosDaTurma
+from modelo.DadosDeNascimento import DadosDeNascimento
+from modelo.DadosDoAluno import DadosDoAluno
 
 
 class ViewCadastro(QDialog):
@@ -24,4 +30,25 @@ class ViewCadastro(QDialog):
         self.anoLetivoLineEdit.setValidator(QIntValidator())
         self.anoLetivoLineEdit.setMaxLength(4)
 
+        self.cadastrarButton.clicked.connect(self.inserirNoBD)
+
         self.show()
+
+    def inserirNoBD(self):
+        nomeAluno = self.nomeDoAlunoLineEdit.text()
+        nomeDoPai = self.nomeDoPaiDoAlunoLineEdit.text()
+        nomeDaMae = self.nomeDaMEDoAlunoLineEdit.text()
+        dataDeNascimento = self.dataDeNascimentoAlunoDateEdit.text()
+        cidadeDeNascimento = self.naturalidadeLineEdit.text()
+        estadoDeNascimento = self.uFLineEdit.text()
+        #segmentoEducacionalComboBox
+        #serieComboBox
+        anoLetivo = self.anoLetivoLineEdit.text()
+
+        a = DadosDoAluno(nomeAluno, nomeDoPai, nomeDaMae)
+        b = DadosDeNascimento(dataDeNascimento, cidadeDeNascimento, estadoDeNascimento)
+        c = DadosDaTurma("3º ano", "Ensino Médio", anoLetivo)
+        al = Aluno(a, b, c)
+
+        gerador = GeradorDB()
+        gerador.insert(al)

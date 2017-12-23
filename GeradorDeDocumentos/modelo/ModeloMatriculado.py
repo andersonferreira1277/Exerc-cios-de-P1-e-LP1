@@ -24,7 +24,7 @@ class Modelo:
 
         "Duas lista de mesmo indice, 1 com palavras que existem no documento e a 2 com palavras para substituir no " \
         "documento"
-        listaDeProcura = ['nome_aluno', 'pai', 'mae', 'nascimento', 'cidade', 'estado', 'serie', 'segmento',
+        listaDeProcura = ['nome_aluno', 'pai', 'mae', 'nascimento', 'cty', 'UF', 'serie', 'segmento',
                           'anoLetivo', 'data', 'xtenso']
         listaAluno = [aluno.dadosDoAluno.nomeAluno, aluno.dadosDoAluno.nomeDoPai, aluno.dadosDoAluno.nomeDaMae,
                       aluno.dadosDeNascimento.dataDeNascimento, aluno.dadosDeNascimento.cidadeDeNascimento,
