@@ -4,7 +4,7 @@
 andersonferreira1277@gmail.com
 """
 
-from PyQt5.QtWidgets import QDialog, QLineEdit
+from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.QtGui import QIntValidator
 from PyQt5 import uic
 import os
@@ -45,10 +45,20 @@ class ViewCadastro(QDialog):
         #serieComboBox
         anoLetivo = self.anoLetivoLineEdit.text()
 
-        a = DadosDoAluno(nomeAluno, nomeDoPai, nomeDaMae)
-        b = DadosDeNascimento(dataDeNascimento, cidadeDeNascimento, estadoDeNascimento)
-        c = DadosDaTurma("3º ano", "Ensino Médio", anoLetivo)
-        al = Aluno(a, b, c)
-
         gerador = GeradorDB()
-        gerador.insert(al)
+        escolha = None
+        if len(gerador.select(nomeAluno)) > 1:
+            messageBox = QMessageBox()
+            messageBox.setIcon(QMessageBox.Warning)
+            messageBox.setText('O nome do aluno já existe. Dejesa cadastrar assim mesmo?')
+            messageBox.setWindowTitle('Nome já existe no Banco de dados.')
+            messageBox.standardButtons(QMessageBox.Yes | QMessageBox.No)
+            escolha = messageBox.exec_()
+
+        if escolha == QMessageBox.Yes:
+            a = DadosDoAluno(nomeAluno, nomeDoPai, nomeDaMae)
+            b = DadosDeNascimento(dataDeNascimento, cidadeDeNascimento, estadoDeNascimento)
+            c = DadosDaTurma("3º ano", "Ensino Médio", anoLetivo)
+            al = Aluno(a, b, c)
+
+            gerador.insert(al)
