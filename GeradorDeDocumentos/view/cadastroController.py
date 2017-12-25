@@ -48,7 +48,6 @@ class ViewCadastro(QDialog):
         messageBox = QMessageBox.Yes
         gerador = GeradorDB()
         if len(gerador.select(nomeAluno)) > 0:
-            print('Já existe')
             messageBox = QMessageBox.warning(self, 'Nome já existe no Banco de dados.',
                                              'O nome do aluno já existe. Deseja cadastrar assim mesmo?',
                                              QMessageBox.Yes | QMessageBox.No)
