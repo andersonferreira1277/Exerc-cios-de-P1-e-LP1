@@ -45,17 +45,15 @@ class ViewCadastro(QDialog):
         #serieComboBox
         anoLetivo = self.anoLetivoLineEdit.text()
 
+        messageBox = QMessageBox.Yes
         gerador = GeradorDB()
-        escolha = None
-        if len(gerador.select(nomeAluno)) > 1:
-            messageBox = QMessageBox()
-            messageBox.setIcon(QMessageBox.Warning)
-            messageBox.setText('O nome do aluno já existe. Dejesa cadastrar assim mesmo?')
-            messageBox.setWindowTitle('Nome já existe no Banco de dados.')
-            messageBox.standardButtons(QMessageBox.Yes | QMessageBox.No)
-            escolha = messageBox.exec_()
+        if len(gerador.select(nomeAluno)) > 0:
+            print('Já existe')
+            messageBox = QMessageBox.warning(self, 'Nome já existe no Banco de dados.',
+                                             'O nome do aluno já existe. Deseja cadastrar assim mesmo?',
+                                             QMessageBox.Yes | QMessageBox.No)
 
-        if escolha == QMessageBox.Yes:
+        if messageBox == QMessageBox.Yes:
             a = DadosDoAluno(nomeAluno, nomeDoPai, nomeDaMae)
             b = DadosDeNascimento(dataDeNascimento, cidadeDeNascimento, estadoDeNascimento)
             c = DadosDaTurma("3º ano", "Ensino Médio", anoLetivo)
