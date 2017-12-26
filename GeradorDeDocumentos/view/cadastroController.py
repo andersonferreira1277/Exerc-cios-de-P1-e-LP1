@@ -59,3 +59,5 @@ class ViewCadastro(QDialog):
             al = Aluno(a, b, c)
 
             gerador.insert(al)
+
+        self.close()
