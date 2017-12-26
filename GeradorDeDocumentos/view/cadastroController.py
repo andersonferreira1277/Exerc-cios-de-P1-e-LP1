@@ -14,6 +14,7 @@ from persistencia.DB import GeradorDB
 from modelo.DadosDaTurma import DadosDaTurma
 from modelo.DadosDeNascimento import DadosDeNascimento
 from modelo.DadosDoAluno import DadosDoAluno
+from modelo.ModeloMatriculado import Modelo
 
 
 class ViewCadastro(QDialog):
@@ -47,6 +48,8 @@ class ViewCadastro(QDialog):
 
         messageBox = QMessageBox.Yes
         gerador = GeradorDB()
+
+        # Verifica se o nome já existe no banco de dados
         if len(gerador.select(nomeAluno)) > 0:
             messageBox = QMessageBox.warning(self, 'Nome já existe no Banco de dados.',
                                              'O nome do aluno já existe. Deseja cadastrar assim mesmo?',
@@ -59,5 +62,7 @@ class ViewCadastro(QDialog):
             al = Aluno(a, b, c)
 
             gerador.insert(al)
+
+            Modelo.replaceModel(al)
 
         self.close()

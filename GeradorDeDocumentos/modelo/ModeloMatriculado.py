@@ -9,13 +9,15 @@ from DadosDeNascimento import DadosDeNascimento
 from DadosDaTurma import DadosDaTurma
 from DataAtual import DataAtual
 from docx import Document
+import platform, os
 
 
 class Modelo:
 
     @staticmethod
     def replaceModel(aluno):
-        document = Document('declaracao.docx')
+        url = os.path.abspath('modelo/declaracao.docx')
+        document = Document(url)
 
         # Obter data atual da classe
         datastr = DataAtual.getData()
@@ -34,11 +36,12 @@ class Modelo:
 
         """for passa pela listaDeProcura, procurando cada item no documento declaracao.docx"""
         for p in document.paragraphs:
-            print(p.text)
+            # retirar comentario dos prints para testar o arquivo declaracao.docx
+            # print(p.text)
             for k in listaDeProcura:
                 if k in p.text:
-                    print('Texto ================================\n'+p.text)
-                    print('FIND!!!!!!!!!!!!!')
+                    # print('Texto ================================\n'+p.text)
+                    # print('FIND!!!!!!!!!!!!!')
                     inline = p.runs
                     # Loop added to work with runs (strings with same style)
                     for i in range(len(inline)):
@@ -47,13 +50,23 @@ class Modelo:
                             text = inline[i].text.replace(k, listaAluno[listaDeProcura.index(k)])
                             inline[i].text = text
 
-        document.save('dest1.docx')
+        # Salva o arquivo com o nome do Aluno seguido da data atual
+        urlDestino = aluno.dadosDoAluno.nomeAluno
+        datastr = datastr.replace('/', '-')
+        nomeDoArquivo = 'Devidamente matrículado '+urlDestino+' '+datastr+'.docx'
+
+        # Salvar documento
+        document.save(os.path.abspath('modelo/'+nomeDoArquivo))
+
+        so = platform.system()
+        nomeDoArquivo = os.path.abspath('modelo/"'+nomeDoArquivo+'"')
+        if so == 'Linux':
+            # Abre o Libre Office com o parametro do path absoluto do arquivo criado na linha 57
+
+            os.system('libreoffice --writer '+nomeDoArquivo)
+        if os == 'Windows':
+            # O sistema recebe o parametro do path absoluto do arquivo criado na linha 57, e abre o
+            # programa adequado (Provalvelmente o Microsoft Word)
+
+            os.system(os.path.abspath('modelo/'+nomeDoArquivo))
         return 1
-
-
-a = DadosDoAluno("Anderson Ferreira Câmara", "Adeilton", "Marineide")
-b = DadosDeNascimento("07/03/1994", "Maceió", "Alagoas")
-c = DadosDaTurma("3º ano", "Ensino Médio", "2018")
-al = Aluno(a, b, c)
-
-Modelo.replaceModel(al)
