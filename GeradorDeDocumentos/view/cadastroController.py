@@ -4,7 +4,7 @@
 andersonferreira1277@gmail.com
 """
 
-from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5.QtWidgets import QDialog, QMessageBox, QComboBox
 from PyQt5.QtGui import QIntValidator
 from PyQt5 import uic
 import os
@@ -31,6 +31,12 @@ class ViewCadastro(QDialog):
         self.anoLetivoLineEdit.setValidator(QIntValidator())
         self.anoLetivoLineEdit.setMaxLength(4)
 
+        #QComboBox.currentText()
+        segmento = ['Educação Infantil', 'Ensino Fundamental I', 'Ensino Fundamental II', 'Ensino Médio']
+        self.segmentoEducacionalComboBox.addItems(segmento)
+        self.segmentoEducacionalComboBox.currentIndexChanged.connect(self.mudarSerie)
+        self.mudarSerie()
+
         self.cadastrarButton.clicked.connect(self.inserirNoBD)
 
         self.show()
@@ -43,15 +49,15 @@ class ViewCadastro(QDialog):
         dataDeNascimento = self.dataDeNascimentoAlunoDateEdit.text()
         cidadeDeNascimento = self.naturalidadeLineEdit.text()
         estadoDeNascimento = self.uFLineEdit.text()
-        #segmentoEducacionalComboBox
-        #serieComboBox
+        segmentoEducacional = self.segmentoEducacionalComboBox.currentText()
+        serie = self.serieComboBox.currentText()
         anoLetivo = self.anoLetivoLineEdit.text()
 
         messageBox = QMessageBox.Yes
         gerador = GeradorDB()
 
         # Verifica se o nome já existe no banco de dados
-        if len(gerador.select(nomeAluno)) > 0:
+        if len(gerador.selectNomeIgual(nomeAluno)) > 0:
             messageBox = QMessageBox.warning(self, 'Nome já existe no Banco de dados.',
                                              'O nome do aluno já existe. Deseja cadastrar assim mesmo?',
                                              QMessageBox.Yes | QMessageBox.No)
@@ -59,7 +65,7 @@ class ViewCadastro(QDialog):
         if messageBox == QMessageBox.Yes:
             a = DadosDoAluno(nomeAluno, nomeDoPai, nomeDaMae)
             b = DadosDeNascimento(dataDeNascimento, cidadeDeNascimento, estadoDeNascimento)
-            c = DadosDaTurma("3º ano", "Ensino Médio", anoLetivo)
+            c = DadosDaTurma(serie, segmentoEducacional, anoLetivo)
             al = Aluno(a, b, c)
 
             gerador.insert(al)
@@ -67,3 +73,17 @@ class ViewCadastro(QDialog):
             Modelo.replaceModel(al)
 
         self.close()
+
+    def mudarSerie(self):
+        if self.segmentoEducacionalComboBox.currentText() == 'Educação Infantil':
+            self.serieComboBox.clear()
+            self.serieComboBox.addItems(['Maternal I', 'Maternal II', 'Infantil I', 'Alfabetização'])
+        elif self.segmentoEducacionalComboBox.currentText() == 'Ensino Fundamental I':
+            self.serieComboBox.clear()
+            self.serieComboBox.addItems(['1º ano', '2º ano', '3º ano', '4º ano', '5º ano'])
+        elif self.segmentoEducacionalComboBox.currentText() == 'Ensino Fundamental II':
+            self.serieComboBox.clear()
+            self.serieComboBox.addItems(['6º ano', '7º ano', '8º ano', '9º ano'])
+        elif self.segmentoEducacionalComboBox.currentText() == 'Ensino Médio':
+            self.serieComboBox.clear()
+            self.serieComboBox.addItems(['1º ano', '2º ano', '3º ano'])

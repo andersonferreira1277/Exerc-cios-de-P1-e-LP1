@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>472</width>
-    <height>389</height>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>9</x>
      <y>9</y>
      <width>451</width>
-     <height>311</height>
+     <height>350</height>
     </rect>
    </property>
    <property name="font">
@@ -267,7 +267,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Cadastrar e criar declarações</string>
+    <string>Cadastrar e criar declaração</string>
    </property>
   </widget>
  </widget>

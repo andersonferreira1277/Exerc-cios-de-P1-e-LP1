@@ -38,12 +38,11 @@ class GeradorDB:
             print("Unexpected error:", sys.exc_info()[0])
             raise
 
-    def select(self, nome):
+    def select(self, sql):
         """"Retorna uma lista de Alunos com o nome relacionado ao paramentro passado"""
         try:
             self.connect()
             lista = []
-            sql = "SELECT * FROM dados_do_aluno WHERE nome_aluno LIKE '%{}%'".format(nome)
             cursor = self.conn.execute(sql)
             for i in cursor:
                 ID = i[0]
@@ -112,3 +111,11 @@ class GeradorDB:
 
     def close(self):
         self.conn.close()
+
+    def selectNomeLike(self, nome):
+        sql = "SELECT * FROM dados_do_aluno WHERE nome_aluno LIKE '%{}%'".format(nome)
+        return self.select(sql)
+
+    def selectNomeIgual(self, nome):
+        sql = "SELECT * FROM dados_do_aluno WHERE nome_aluno LIKE '{}'".format(nome)
+        return self.select(sql)
