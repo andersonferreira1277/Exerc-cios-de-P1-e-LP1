@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>399</width>
-    <height>353</height>
+    <width>472</width>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,43 +18,86 @@
     <rect>
      <x>9</x>
      <y>9</y>
-     <width>381</width>
+     <width>451</width>
      <height>311</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <layout class="QFormLayout" name="formLayout">
     <item row="0" column="0">
      <widget class="QLabel" name="nomeDoAlunoLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Nome do Aluno</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="nomeDoAlunoLineEdit"/>
+     <widget class="QLineEdit" name="nomeDoAlunoLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="nomeDoPaiDoAlunoLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Nome do Pai do aluno</string>
       </property>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="nomeDoPaiDoAlunoLineEdit"/>
+     <widget class="QLineEdit" name="nomeDoPaiDoAlunoLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="nomeDaMEDoAlunoLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Nome da Mãe do aluno</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="nomeDaMEDoAlunoLineEdit"/>
+     <widget class="QLineEdit" name="nomeDaMEDoAlunoLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="dataDeNascimentoAlunoLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Data de Nascimento aluno</string>
       </property>
@@ -62,6 +105,11 @@
     </item>
     <item row="3" column="1">
      <widget class="QDateEdit" name="dataDeNascimentoAlunoDateEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="dateTime">
        <datetime>
         <hour>0</hour>
@@ -96,46 +144,95 @@
     </item>
     <item row="4" column="0">
      <widget class="QLabel" name="naturalidadeLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Naturalidade</string>
       </property>
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QLineEdit" name="naturalidadeLineEdit"/>
+     <widget class="QLineEdit" name="naturalidadeLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="5" column="0">
      <widget class="QLabel" name="uFLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>UF</string>
       </property>
      </widget>
     </item>
     <item row="5" column="1">
-     <widget class="QLineEdit" name="uFLineEdit"/>
+     <widget class="QLineEdit" name="uFLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="6" column="0">
      <widget class="QLabel" name="segmentoEducacionalLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Segmento Educacional</string>
       </property>
      </widget>
     </item>
     <item row="6" column="1">
-     <widget class="QComboBox" name="segmentoEducacionalComboBox"/>
+     <widget class="QComboBox" name="segmentoEducacionalComboBox">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="7" column="0">
      <widget class="QLabel" name="serieLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Serie</string>
       </property>
      </widget>
     </item>
     <item row="7" column="1">
-     <widget class="QComboBox" name="serieComboBox"/>
+     <widget class="QComboBox" name="serieComboBox">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="8" column="0">
      <widget class="QLabel" name="anoLetivoLabel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Ano Letivo</string>
       </property>
@@ -143,6 +240,11 @@
     </item>
     <item row="8" column="1">
      <widget class="QLineEdit" name="anoLetivoLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="inputMethodHints">
        <set>Qt::ImhPreferNumbers</set>
       </property>
@@ -153,14 +255,19 @@
   <widget class="QPushButton" name="cadastrarButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>320</y>
-     <width>85</width>
-     <height>27</height>
+     <x>30</x>
+     <y>340</y>
+     <width>401</width>
+     <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>Cadastrar</string>
+    <string>Cadastrar e criar declarações</string>
    </property>
   </widget>
  </widget>
