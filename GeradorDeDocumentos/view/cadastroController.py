@@ -36,6 +36,7 @@ class ViewCadastro(QDialog):
         self.show()
 
     def inserirNoBD(self):
+        """Insere as informações digitadas no banco de dados, cria o arquivo e abre"""
         nomeAluno = self.nomeDoAlunoLineEdit.text()
         nomeDoPai = self.nomeDoPaiDoAlunoLineEdit.text()
         nomeDaMae = self.nomeDaMEDoAlunoLineEdit.text()
