@@ -59,14 +59,16 @@ class Modelo:
         document.save(os.path.abspath('modelo/'+nomeDoArquivo))
 
         so = platform.system()
-        nomeDoArquivo = os.path.abspath('modelo/"'+nomeDoArquivo+'"')
+        nomeDoArquivo = os.path.abspath('modelo/'+nomeDoArquivo)
+        nomeDoArquivo = '"'+nomeDoArquivo+'"'
         if so == 'Linux':
             # Abre o Libre Office com o parametro do path absoluto do arquivo criado na linha 57
 
             os.system('libreoffice --writer '+nomeDoArquivo)
-        if os == 'Windows':
+        if so == 'Windows':
             # O sistema recebe o parametro do path absoluto do arquivo criado na linha 57, e abre o
             # programa adequado (Provalvelmente o Microsoft Word)
 
-            os.system(os.path.abspath('modelo/'+nomeDoArquivo))
+            print('Caminho do arquivo: ' + nomeDoArquivo)
+            os.system(nomeDoArquivo)
         return 1

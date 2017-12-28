@@ -31,7 +31,7 @@ class ViewCadastro(QDialog):
         self.anoLetivoLineEdit.setValidator(QIntValidator())
         self.anoLetivoLineEdit.setMaxLength(4)
 
-        segmento = ['Educação Infantil', 'Ensino Fundamental I', 'Ensino Fundamental II', 'Ensino Médio']
+        segmento = ['Curso da Educação Infantil', 'Ensino Fundamental I', 'Ensino Fundamental II', 'Ensino Médio']
         self.segmentoEducacionalComboBox.addItems(segmento)
         self.segmentoEducacionalComboBox.currentIndexChanged.connect(self.mudarSerie)
         self.mudarSerie()
