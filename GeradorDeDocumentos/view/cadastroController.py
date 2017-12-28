@@ -4,7 +4,7 @@
 andersonferreira1277@gmail.com
 """
 
-from PyQt5.QtWidgets import QDialog, QMessageBox, QComboBox
+from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.QtGui import QIntValidator
 from PyQt5 import uic
 import os
@@ -31,7 +31,6 @@ class ViewCadastro(QDialog):
         self.anoLetivoLineEdit.setValidator(QIntValidator())
         self.anoLetivoLineEdit.setMaxLength(4)
 
-        #QComboBox.currentText()
         segmento = ['Educação Infantil', 'Ensino Fundamental I', 'Ensino Fundamental II', 'Ensino Médio']
         self.segmentoEducacionalComboBox.addItems(segmento)
         self.segmentoEducacionalComboBox.currentIndexChanged.connect(self.mudarSerie)
@@ -75,7 +74,7 @@ class ViewCadastro(QDialog):
         self.close()
 
     def mudarSerie(self):
-        if self.segmentoEducacionalComboBox.currentText() == 'Educação Infantil':
+        if self.segmentoEducacionalComboBox.currentText() == 'Curso da Educação Infantil':
             self.serieComboBox.clear()
             self.serieComboBox.addItems(['Maternal I', 'Maternal II', 'Infantil I', 'Alfabetização'])
         elif self.segmentoEducacionalComboBox.currentText() == 'Ensino Fundamental I':
