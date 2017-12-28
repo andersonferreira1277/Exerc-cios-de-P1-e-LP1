@@ -45,7 +45,7 @@ class Modelo:
                     inline = p.runs
                     # Loop added to work with runs (strings with same style)
                     for i in range(len(inline)):
-                        print('Listas: ' + inline[i].text)
+                        # print('Listas: ' + inline[i].text)
                         if k in inline[i].text:
                             text = inline[i].text.replace(k, listaAluno[listaDeProcura.index(k)])
                             inline[i].text = text
@@ -69,6 +69,5 @@ class Modelo:
             # O sistema recebe o parametro do path absoluto do arquivo criado na linha 57, e abre o
             # programa adequado (Provalvelmente o Microsoft Word)
 
-            print('Caminho do arquivo: ' + nomeDoArquivo)
             os.system(nomeDoArquivo)
         return 1
