@@ -22,15 +22,18 @@ class Modelo:
         # Obter data atual da classe
         datastr = DataAtual.getData()
         dataPorExtenso = DataAtual.getDataPorExtenso()
-        #
 
-        "Duas lista de mesmo indice, 1 com palavras que existem no documento e a 2 com palavras para substituir no " \
-        "documento"
-        listaDeProcura = ['nome_aluno', 'pai', 'mae', 'nascimento', 'cty', 'UF', 'serie', 'segmento',
+        "Duas lista de mesmo indice, 1 com palavras que existem no documento e a 2 com palavras para " \
+        "substituir no documento"
+
+        # Existe umas exceção para usar "no" antes da serie, se for alfabetização usasse "na"
+        comserie = 'na' if aluno.dadosDaTurma.serie == 'Alfabetização' else 'no'
+
+        listaDeProcura = ['nome_aluno', 'pai', 'mae', 'nascimento', 'cty', 'UF', 'comserie',  'serie', 'segmento',
                           'anoLetivo', 'data', 'xtenso']
         listaAluno = [aluno.dadosDoAluno.nomeAluno, aluno.dadosDoAluno.nomeDoPai, aluno.dadosDoAluno.nomeDaMae,
                       aluno.dadosDeNascimento.dataDeNascimento, aluno.dadosDeNascimento.cidadeDeNascimento,
-                      aluno.dadosDeNascimento.estadoDeNascimento,
+                      aluno.dadosDeNascimento.estadoDeNascimento, comserie,
                       aluno.dadosDaTurma.serie, aluno.dadosDaTurma.segmento, aluno.dadosDaTurma.anoLetivo, datastr,
                       dataPorExtenso]
 

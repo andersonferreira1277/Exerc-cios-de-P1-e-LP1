@@ -61,6 +61,8 @@ class ViewCadastro(QDialog):
                                              'O nome do aluno já existe. Deseja cadastrar assim mesmo?',
                                              QMessageBox.Yes | QMessageBox.No)
 
+        # Se não existir ou o usuario queria inserir, é criado um Objeto aluno inserido no banco de dados
+        # e criada a declaração.
         if messageBox == QMessageBox.Yes:
             a = DadosDoAluno(nomeAluno, nomeDoPai, nomeDaMae)
             b = DadosDeNascimento(dataDeNascimento, cidadeDeNascimento, estadoDeNascimento)
