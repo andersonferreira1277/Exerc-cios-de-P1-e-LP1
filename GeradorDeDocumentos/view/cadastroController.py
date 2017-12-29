@@ -104,10 +104,11 @@ class ViewCadastro(QDialog):
                         pallete.setColor(x.backgroundRole(), QColor(255, 80, 80)) # cor
                         x.setPalette(pallete) # seta a cor para campos vazios
 
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setText("Por favor, preencha os campos obrigatórios.")
-        msg.setWindowTitle("Informação")
-        msg.exec_()
+        if count > 0:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Por favor, preencha os campos obrigatórios.")
+            msg.setWindowTitle("Informação")
+            msg.exec_()
 
         return count
