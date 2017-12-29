@@ -3,11 +3,8 @@
 """
 andersonferreira1277@gmail.com
 """
-from Aluno import Aluno
-from DadosDoAluno import DadosDoAluno
-from DadosDeNascimento import DadosDeNascimento
-from DadosDaTurma import DadosDaTurma
-from DataAtual import DataAtual
+
+from modelo.DataAtual import DataAtual
 from docx import Document
 import platform, os
 
