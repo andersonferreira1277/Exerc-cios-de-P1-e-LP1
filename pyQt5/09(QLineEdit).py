@@ -15,6 +15,9 @@ class MyWindow(QWidget):
         e1.setMaxLength(4)
         e1.setAlignment(Qt.AlignRight)
         e1.setFont(QFont("Arial",20))
+        pallete = QPalette()
+        pallete.setColor(e1.backgroundRole(), QColor('red'))
+        e1.setPalette(pallete)
 
         e2=QLineEdit()
         e2.setValidator(QDoubleValidator(0.99,99.99,2))

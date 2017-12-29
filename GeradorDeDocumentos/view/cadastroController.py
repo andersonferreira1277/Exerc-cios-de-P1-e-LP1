@@ -4,8 +4,8 @@
 andersonferreira1277@gmail.com
 """
 
-from PyQt5.QtWidgets import QDialog, QMessageBox
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtWidgets import QDialog, QMessageBox, QLineEdit
+from PyQt5.QtGui import QIntValidator, QPalette, QColor
 from PyQt5 import uic
 import os
 
@@ -42,6 +42,9 @@ class ViewCadastro(QDialog):
 
     def inserirNoBD(self):
         """Insere as informações digitadas no banco de dados, cria o arquivo e abre"""
+        if self.verificaCamposVazios()> 0: # Verifica se existe alguma campo vazio
+            return 1 # se existir algum campo vazio, termina a função aqui
+
         nomeAluno = self.nomeDoAlunoLineEdit.text()
         nomeDoPai = self.nomeDoPaiDoAlunoLineEdit.text()
         nomeDaMae = self.nomeDaMEDoAlunoLineEdit.text()
@@ -88,3 +91,23 @@ class ViewCadastro(QDialog):
         elif self.segmentoEducacionalComboBox.currentText() == 'Ensino Médio':
             self.serieComboBox.clear()
             self.serieComboBox.addItems(['1º ano', '2º ano', '3º ano'])
+
+    def verificaCamposVazios(self):
+        count = 0
+        for i in self.children(): # Obtem todos componentes da view
+            for x in i.children(): # obtem todos os componentes de i
+                # print(type(x)) # mostra a lista de classe de i
+                if type(x) == QLineEdit: # se o componente for do tipo QLineEdit, Verifica se está vazio
+                    if x.text() =='':
+                        count+=1
+                        pallete = QPalette()
+                        pallete.setColor(x.backgroundRole(), QColor(255, 80, 80)) # cor
+                        x.setPalette(pallete) # seta a cor para campos vazios
+
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Por favor, preencha os campos obrigatórios.")
+        msg.setWindowTitle("Informação")
+        msg.exec_()
+
+        return count
