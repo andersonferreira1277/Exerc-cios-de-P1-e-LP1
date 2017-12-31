@@ -7,15 +7,18 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5 import uic
 from view.cadastroController import ViewCadastro
+from view.pesquisaController import PesquisaController
 
 
 class MyMainWindow(QMainWindow):
     _instanceJanelaCadastro = None
+    _instanceJanelaPesquisa = None
 
     def __init__(self):
         super(MyMainWindow, self).__init__()
         uic.loadUi('mainwindowView.ui', self)
         self.cadastro.clicked.connect(self.abrirTelaCadastro)
+        self.pesquisa.clicked.connect(self.abrirTelaPesquisa)
         self.statusbar.showMessage('Anderson Ferreira Câmara - andersonferreira1277@gmail.com ')
 
         self.show()
@@ -25,8 +28,12 @@ class MyMainWindow(QMainWindow):
             self._instanceJanelaCadastro = ViewCadastro(self)
             self._instanceJanelaCadastro.exec_()
             self._instanceJanelaCadastro = None
-        else:
-            self._instanceJanelaCadastro.show()
+
+    def abrirTelaPesquisa(self):
+        if not self._instanceJanelaPesquisa:
+            self._instanceJanelaPesquisa = PesquisaController(self)
+            self._instanceJanelaPesquisa.exec_()
+            self._instanceJanelaPesquisa = None
 
 
 if __name__ == '__main__':
