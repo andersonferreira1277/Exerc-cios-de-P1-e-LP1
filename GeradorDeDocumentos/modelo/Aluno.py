@@ -23,3 +23,18 @@ class Aluno:
                '\nCidade: ' + self.dadosDeNascimento.cidadeDeNascimento + '\nUF: ' + \
                 self.dadosDeNascimento.estadoDeNascimento + '\nSerie: ' + self.dadosDaTurma.serie + '\nsegmento: ' + \
                 self.dadosDaTurma.segmento + '\nAno Letivo: ' + str(self.dadosDaTurma.anoLetivo)
+
+    def toList(self):
+        lista = []
+        lista.append(self.ID)
+        lista.append(self.dadosDoAluno.nomeAluno)
+        lista.append(self.dadosDoAluno.nomeDoPai)
+        lista.append(self.dadosDoAluno.nomeDaMae)
+        lista.append(self.dadosDeNascimento.dataDeNascimento)
+        lista.append(self.dadosDeNascimento.cidadeDeNascimento)
+        lista.append(self.dadosDeNascimento.estadoDeNascimento)
+        lista.append(self.dadosDaTurma.serie)
+        lista.append(self.dadosDaTurma.segmento)
+        lista.append(self.dadosDaTurma.anoLetivo)
+
+        return lista
