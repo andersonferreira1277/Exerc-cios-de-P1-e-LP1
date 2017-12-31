@@ -3,7 +3,7 @@
 """
 andersonferreira1277@gmail.com
 """
-from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QTableWidget
+from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 import os
 from PyQt5 import uic
 from persistencia.DB import GeradorDB
@@ -71,8 +71,7 @@ class PesquisaController(QDialog):
                            'serie', 'segmento', 'ano_letivo']
 
         if linha > -1: # cellChanged retorna -1 caso não tenha nenhuma celula com mudança
-
-            for i in range(10):
+            for i in range(self.tableWidget.columnCount()):
                 item = self.tableWidget.item(linha, i)
                 aluno[listaParaChaves[i]] = item.text() # adiciona em cada chave o item da tabela
                 # relacionado
