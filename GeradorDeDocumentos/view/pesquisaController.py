@@ -12,6 +12,7 @@ from modelo.DadosDeNascimento import DadosDeNascimento
 from modelo.DadosDaTurma import DadosDaTurma
 from modelo.Aluno import Aluno
 from PyQt5.Qt import Qt
+from modelo.ModeloMatriculado import Modelo
 
 
 class PesquisaController(QDialog):
@@ -25,9 +26,16 @@ class PesquisaController(QDialog):
         url = os.path.abspath('view/pesquisa.ui')
         uic.loadUi(url, self)
 
-        self.nomeDoAlunoLineEdit.textChanged.connect(self.procurarAluno)
-        # self.tableWidget.clicked.connect(self.itemSelecionado)
-        self.tableWidget.cellChanged.connect(self.itemSelecionado)
+        self.nomeDoAlunoLineEdit.textChanged.connect(self.procurarAluno) # ao digitar na caixa de texto
+        # chama a funcão de procurar o aluno
+
+        self.tableWidget.cellChanged.connect(self.editarRegistro) # quando o valor da celula muda, chama
+        # a função que atualiza o banco de dados
+
+        self.btnGerarDeclaracao.clicked.connect(self.gerarDeclaracao) # conectado a função
+        # gerar declaração
+
+        self.btnExcluirAluno.clicked.connect(self.excluirAluno) # conectado a função excluir aluno
 
         self.procurarAluno()
 
@@ -51,24 +59,25 @@ class PesquisaController(QDialog):
                 self.tableWidget.insertRow(i)
                 aluno = lista[i].toList()
 
-                for x in aluno:
-                    item = QTableWidgetItem(str(x))
-                    column = aluno.index(x)
+                for x in range(len(aluno)):
+                    item = QTableWidgetItem(str(aluno[x]))
+                    column = x
                     if column == 0:
                         item.setFlags(Qt.ItemIsEnabled)
                     self.tableWidget.setItem(i, column, item)
-
         else:
             self.tableWidget.setRowCount(0)
 
     def itemSelecionado(self):
         """Retorna o item selecionado"""
 
+        al = None
+
         linha = self.tableWidget.currentRow() # linha selecionada pelo usuario
 
         aluno = {}
-        listaParaChaves = ['id', 'nome_aluno', 'pai', 'mae', 'data', 'cidade_nascimento', 'estado_nascimento',
-                           'serie', 'segmento', 'ano_letivo']
+        listaParaChaves = ['id', 'nome_aluno', 'pai', 'mae', 'data', 'cidade_nascimento',
+                           'estado_nascimento', 'serie', 'segmento', 'ano_letivo']
 
         if linha > -1: # cellChanged retorna -1 caso não tenha nenhuma celula com mudança
             for i in range(self.tableWidget.columnCount()):
@@ -82,4 +91,18 @@ class PesquisaController(QDialog):
             al = Aluno(a, b, c)
             al.setID(aluno['id'])
 
+        return al
+
+    def editarRegistro(self):
+        al = self.itemSelecionado()
+        if al:
             self.gerador.update(al)
+
+    def gerarDeclaracao(self):
+        al = self.itemSelecionado()
+        Modelo.replaceModel(al, self.gerador.obterCaminho())
+
+    def excluirAluno(self):
+        al = self.itemSelecionado()
+        self.gerador.deleteById(al.ID)
+        self.procurarAluno() # atualiza a tabela

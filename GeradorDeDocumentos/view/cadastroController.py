@@ -74,7 +74,7 @@ class ViewCadastro(QDialog):
 
             gerador.insert(al)
 
-            Modelo.replaceModel(al)
+            Modelo.replaceModel(al, gerador.obterCaminho())
 
         self.close()
 
@@ -104,7 +104,7 @@ class ViewCadastro(QDialog):
                         pallete.setColor(x.backgroundRole(), QColor(255, 80, 80)) # cor
                         x.setPalette(pallete) # seta a cor para campos vazios
 
-        if count > 0:
+        if count > 0: # count representa o número de linhas vazias
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setText("Por favor, preencha os campos obrigatórios.")

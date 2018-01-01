@@ -15,8 +15,12 @@ import sys
 class GeradorDB:
 
     def connect(self):
-        url = os.path.abspath('bd.db')
-        self.conn = sqlite3.connect(url)
+        try:
+            url = os.path.abspath('bd.db')
+            self.conn = sqlite3.connect(url)
+        except:
+            print("Erro ao conectar ao banco de dados:", sys.exc_info()[0])
+            raise
 
     def insert(self, aluno):
         """Recebe um Objeto Aluno e grava no Banco de dados"""
@@ -35,7 +39,7 @@ class GeradorDB:
             return linhas
         except:
             self.close()
-            print("Unexpected error:", sys.exc_info()[0])
+            print("Erro ao inserir dados:", sys.exc_info()[0])
             raise
 
     def select(self, sql):
@@ -66,7 +70,7 @@ class GeradorDB:
 
         except:
             self.close()
-            print("Unexpected error:", sys.exc_info()[0])
+            print("Erro ao executar select:", sys.exc_info()[0])
             raise
 
     def update(self, aluno):
@@ -90,7 +94,7 @@ class GeradorDB:
             return linhas
         except:
             self.close()
-            print("Unexpected error:", sys.exc_info()[0])
+            print("Erro ao fazer update do registro:", sys.exc_info()[0])
             raise
 
     def deleteById(self, idAluno):
@@ -106,7 +110,8 @@ class GeradorDB:
             self.close()
             return linhas
         except:
-            print("Unexpected error:", sys.exc_info()[0])
+            self.close()
+            print("Erro ao deletar pelo ID:", sys.exc_info()[0])
             raise
 
     def close(self):
@@ -119,3 +124,31 @@ class GeradorDB:
     def selectNomeIgual(self, nome):
         sql = "SELECT * FROM dados_do_aluno WHERE nome_aluno LIKE '{}'".format(nome)
         return self.select(sql)
+
+    def obterCaminho(self):
+        """Retorna string com o caminho para salvar o arquivo"""
+        url = str()
+        try:
+            self.connect()
+            sql = 'SELECT caminho FROM config WHERE id=1;'
+            cursor = self.conn.execute(sql)
+            for i in cursor:
+                url = '"'+i[0]+'"'
+        except:
+            self.close()
+            print("Erro ao obter caminho para salvar arquivo:", sys.exc_info()[0])
+            raise
+
+        return url
+
+    def salvarCaminho(self, caminho):
+        try:
+            sql = "UPDATE config SET caminho='{}' WHERE id=1;".format(caminho)
+            self.connect()
+            self.conn.execute(sql)
+            self.conn.commit()
+            self.close()
+        except:
+            self.close()
+            print("Erro ao inserir caminho para salvar arquivo:", sys.exc_info()[0])
+            raise

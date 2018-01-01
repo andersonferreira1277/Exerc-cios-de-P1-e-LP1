@@ -12,7 +12,7 @@ import platform, os
 class Modelo:
 
     @staticmethod
-    def replaceModel(aluno):
+    def replaceModel(aluno, caminho):
         url = os.path.abspath('modelo/declaracao.docx')
         document = Document(url)
 
@@ -55,19 +55,22 @@ class Modelo:
         datastr = datastr.replace('/', '-')
         nomeDoArquivo = 'Devidamente matrículado '+urlDestino+' '+datastr+'.docx'
 
+        # juntando path recebido no parametro com o nome do arquivo e adicionando ""
+        caminho = caminho.replace('"','')
+        caminho = os.path.join(caminho, nomeDoArquivo)
+
         # Salvar documento
-        document.save(os.path.abspath('modelo/'+nomeDoArquivo))
+        document.save(caminho)
+        caminho = '"' + caminho + '"' # adicionando "" para poder abrir
 
         so = platform.system()
-        nomeDoArquivo = os.path.abspath('modelo/'+nomeDoArquivo)
-        nomeDoArquivo = '"'+nomeDoArquivo+'"'
         if so == 'Linux':
             # Abre o Libre Office com o parametro do path absoluto do arquivo criado na linha 57
 
-            os.system('libreoffice --writer '+nomeDoArquivo)
+            os.system('libreoffice --writer '+caminho)
         if so == 'Windows':
             # O sistema recebe o parametro do path absoluto do arquivo criado na linha 57, e abre o
             # programa adequado (Provalvelmente o Microsoft Word)
 
-            os.system(nomeDoArquivo)
+            os.system(caminho)
         return 1

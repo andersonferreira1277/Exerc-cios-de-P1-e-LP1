@@ -3,22 +3,33 @@
 """
 andersonferreira1277@gmail.com
 """
-import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication
+import sys, os
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 from PyQt5 import uic
 from view.cadastroController import ViewCadastro
 from view.pesquisaController import PesquisaController
+from persistencia.DB import GeradorDB
 
 
 class MyMainWindow(QMainWindow):
     _instanceJanelaCadastro = None
     _instanceJanelaPesquisa = None
+    gerador = GeradorDB()
 
     def __init__(self):
         super(MyMainWindow, self).__init__()
         uic.loadUi('mainwindowView.ui', self)
+
         self.cadastro.clicked.connect(self.abrirTelaCadastro)
+
         self.pesquisa.clicked.connect(self.abrirTelaPesquisa)
+
+        self.mostrarCaminho()
+
+        self.btnSelecionar.clicked.connect(self.escolherCaminho)
+
+        self.btnAbrirPasta.clicked.connect(self.abrirPasta)
+
         self.statusbar.showMessage('Anderson Ferreira Câmara - andersonferreira1277@gmail.com ')
 
         self.show()
@@ -34,6 +45,17 @@ class MyMainWindow(QMainWindow):
             self._instanceJanelaPesquisa = PesquisaController(self)
             self._instanceJanelaPesquisa.exec_()
             self._instanceJanelaPesquisa = None
+
+    def mostrarCaminho(self):
+        self.lineEditCaminho.setText(self.gerador.obterCaminho())
+
+    def escolherCaminho(self):
+        dlg = QFileDialog.getExistingDirectory(self, 'Onde salvar?', '/')
+        self.gerador.salvarCaminho(dlg)
+        self.mostrarCaminho()
+
+    def abrirPasta(self):
+        os.system('nemo '+self.gerador.obterCaminho())
 
 
 if __name__ == '__main__':
