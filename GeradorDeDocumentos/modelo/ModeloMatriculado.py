@@ -3,7 +3,7 @@
 """
 andersonferreira1277@gmail.com
 """
-
+import subprocess
 from modelo.DataAtual import DataAtual
 from docx import Document
 import platform, os
@@ -65,12 +65,8 @@ class Modelo:
 
         so = platform.system()
         if so == 'Linux':
-            # Abre o Libre Office com o parametro do path absoluto do arquivo criado na linha 57
-
-            os.startfile(caminho)
+            caminho = caminho.replace('"', '') # comando não recebe ""
+            subprocess.call(['xdg-open', caminho])
         if so == 'Windows':
-            # O sistema recebe o parametro do path absoluto do arquivo criado na linha 57, e abre o
-            # programa adequado (Provalvelmente o Microsoft Word)
-
-            os.startfile(caminho)
+            os.startfile(caminho) # usa biblioteca do sistema para abrir o arquivo
         return 1
