@@ -67,10 +67,10 @@ class Modelo:
         if so == 'Linux':
             # Abre o Libre Office com o parametro do path absoluto do arquivo criado na linha 57
 
-            os.system('libreoffice --writer '+caminho)
+            os.startfile(caminho)
         if so == 'Windows':
             # O sistema recebe o parametro do path absoluto do arquivo criado na linha 57, e abre o
             # programa adequado (Provalvelmente o Microsoft Word)
 
-            os.system(caminho)
+            os.startfile(caminho)
         return 1
