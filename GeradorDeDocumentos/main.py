@@ -58,10 +58,9 @@ class MyMainWindow(QMainWindow):
     def abrirPasta(self):
         sistema = platform.system()
         if sistema == 'Linux':
-            os.system('nemo '+self.gerador.obterCaminho())
+            os.startfile(self.gerador.obterCaminho())
         if sistema == 'Windows':
-            print(self.gerador.obterCaminho())
-            os.system('explorer '+self.gerador.obterCaminho())
+            os.startfile(self.gerador.obterCaminho())
 
 
 if __name__ == '__main__':
