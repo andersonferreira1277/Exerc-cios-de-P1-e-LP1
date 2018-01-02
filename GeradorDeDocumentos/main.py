@@ -3,7 +3,7 @@
 """
 andersonferreira1277@gmail.com
 """
-import sys, os
+import sys, os, platform
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 from PyQt5 import uic
 from view.cadastroController import ViewCadastro
@@ -51,11 +51,17 @@ class MyMainWindow(QMainWindow):
 
     def escolherCaminho(self):
         dlg = QFileDialog.getExistingDirectory(self, 'Onde salvar?', '/')
+        dlg = os.path.abspath(dlg)
         self.gerador.salvarCaminho(dlg)
         self.mostrarCaminho()
 
     def abrirPasta(self):
-        os.system('nemo '+self.gerador.obterCaminho())
+        sistema = platform.system()
+        if sistema == 'Linux':
+            os.system('nemo '+self.gerador.obterCaminho())
+        if sistema == 'Windows':
+            print(self.gerador.obterCaminho())
+            os.system('explorer '+self.gerador.obterCaminho())
 
 
 if __name__ == '__main__':
