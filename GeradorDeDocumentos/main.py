@@ -3,7 +3,7 @@
 """
 andersonferreira1277@gmail.com
 """
-import sys, os, platform
+import sys, os, subprocess
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 from PyQt5 import uic
 from view.cadastroController import ViewCadastro
@@ -56,11 +56,12 @@ class MyMainWindow(QMainWindow):
         self.mostrarCaminho()
 
     def abrirPasta(self):
-        sistema = platform.system()
-        if sistema == 'Linux':
+        if sys.platform == "win32":
             os.startfile(self.gerador.obterCaminho())
-        if sistema == 'Windows':
-            os.startfile(self.gerador.obterCaminho())
+        else:
+            opener = "open" if sys.platform == "darwin" else "xdg-open"
+            url = self.gerador.obterCaminho().replace('"', '') # comando não recebe ""
+            subprocess.call([opener, url])
 
 
 if __name__ == '__main__':
