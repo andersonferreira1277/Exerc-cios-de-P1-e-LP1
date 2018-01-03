@@ -8,7 +8,7 @@ import sys
 base = 'Win32GUI' if sys.platform=='win32' else None
 
 executables = [
-    Executable('main.py', base=base, targetName = 'declaracoes.exe')
+    Executable('main.py', base=base, targetName = 'declaracoes.exe', icon="img/icon.ico")
 ]
 
 setup(name='Gerador de Declarações',
