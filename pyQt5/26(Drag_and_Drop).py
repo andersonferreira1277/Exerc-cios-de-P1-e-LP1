@@ -19,7 +19,7 @@ class DemoDragAndDrop(QComboBox):
     def dropEvent(self, e):
         self.addItem(e.mimeData().text())
 
-class Example(QWidget):
+class Example(QWidget): #
     def __init__(self):
         super(Example, self).__init__()
         self.initUI()
