@@ -6,7 +6,7 @@ andersonferreira1277@gmail.com
 
 import hashlib
 
-texto = input('Digite o texto para gerar a hash')
+texto = input('Digite o texto para gerar a hash\n')
 h = hashlib.sha256()
 print(texto.encode())
 h.update(texto.encode())
