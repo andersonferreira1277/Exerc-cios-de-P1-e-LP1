@@ -3,17 +3,20 @@
 
 from kivy.app import App
 from kivy.uix.label import Label
+from kivy.uix.widget import Widget
 from kivy.lang import Builder
 
-Builder.load_file('MyLabel.kv')
-class MyLabel(Label): pass
+
+Builder.load_file('SimpleKivy3.kv')
 
 
-class MyApp(App):
+class Widgets(Widget): pass
+
+class SimpleKivy2(App):
 
     def build(self):
-        return MyLabel()
+        return Widgets()
 
 
 if __name__ == '__main__':
-    MyApp().run()
+    SimpleKivy2().run()
