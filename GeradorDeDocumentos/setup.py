@@ -1,18 +1,9 @@
-from cx_Freeze import setup, Executable
+from setuptools import setup, find_packages
 
-# Dependencies are automatically detected, but it might need
-# fine tuning.
-buildOptions = dict(packages = ["os", "sys", "subprocess"], excludes = ["tkinter"])
 
-import sys
-base = 'Win32GUI' if sys.platform=='win32' else None
-
-executables = [
-    Executable('main.py', base=base, targetName = 'declaracoes.exe', icon="img/icon.ico")
-]
-
-setup(name='Gerador de Declarações',
-      version = '0.1',
-      description = 'Programas gerador de declarações',
-      options = dict(build_exe = buildOptions),
-      executables = executables)
+setup(
+    name="Gerador de Documentos",
+    version="0.1",
+    packages=find_packages(),
+    install_requires=['pyqt5','python-docx']
+)
