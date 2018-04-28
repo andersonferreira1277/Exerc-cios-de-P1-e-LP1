@@ -3,4 +3,4 @@ b = int(input('digite outro valor\n'))
 
 x = a * b
 
-print("PROD = {}".format(x))
+print("Resultado = {}".format(x))
