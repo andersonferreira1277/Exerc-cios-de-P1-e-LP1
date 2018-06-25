@@ -48,7 +48,7 @@ def Notas(v):
     if True:
         count_1 = v/1
 valor = int(input())
-print valor
+print(valor)
 Notas(valor)
 print ("%d nota(s) de R$ 100,00" % count_100)
 print ("%d nota(s) de R$ 50,00" % count_50)

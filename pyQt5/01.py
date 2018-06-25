@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget, QApplication
 
 app = QApplication(sys.argv)
 frame = QWidget()
