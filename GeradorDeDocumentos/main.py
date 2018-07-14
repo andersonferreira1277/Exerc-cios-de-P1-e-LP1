@@ -10,8 +10,10 @@ from view.cadastroController import ViewCadastro
 from view.pesquisaController import PesquisaController
 from persistencia.DB import GeradorDB
 
-como
+
 class MyMainWindow(QMainWindow):
+
+
     _instanceJanelaCadastro = None
     _instanceJanelaPesquisa = None
     gerador = GeradorDB()
