@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
-#andersonferreira1277@gmail.com
+# andersonferreira1277@gmail.com
 
 import sys
 from mainwindow import Ui_MainWindow
 from PyQt5.QtWidgets import QApplication, QMainWindow
+
 
 class MyWindow(Ui_MainWindow):
     def __init__(self, qMain):
