@@ -18,12 +18,13 @@ def check_host(confiaveis):
                 else:
                     s = "Não conectou a: " + host
                     s = s + " - Data e hora: " + datetime.datetime.now().strftime("%Y-%m-%d %T")
-                    with open("relatorioInternet.txt", 'a') as arquivo:
-                        arquivo.write(s)
-                        arquivo.write("\n")
             except:
-                pass
+                s = "Não conectou a: " + host
+                s = s + " - Data e hora: " + datetime.datetime.now().strftime("%Y-%m-%d %T")
             a.close()
+            with open("relatorioInternet.txt", 'a') as arquivo:
+                arquivo.write(s)
+                arquivo.write("\n")
         time.sleep(60*30)
 
 
