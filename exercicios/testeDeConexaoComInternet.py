@@ -25,7 +25,7 @@ def check_host(confiaveis):
             with open("relatorioInternet.txt", 'a') as arquivo:
                 arquivo.write(s)
                 arquivo.write("\n")
-        time.sleep(60*30)
+        time.sleep(60*30) # tempo em segundos
 
 
 if __name__ == '__main__':
