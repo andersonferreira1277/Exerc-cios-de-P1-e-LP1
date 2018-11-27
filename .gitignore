@@ -67,3 +67,4 @@ local.properties
 *.sqlite3
 *.db
 .vscode/
+exercicios/relatoriointernet.txt
