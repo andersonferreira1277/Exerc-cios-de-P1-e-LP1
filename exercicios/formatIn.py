@@ -1,3 +1,14 @@
+"""
+Transforma:
+121212
+656566
+565656
+
+EM:
+('121212', '656566', '565656')
+
+
+"""
 with open('lista.txt') as f:
     lines = f.readlines()
 
